@@ -96,9 +96,9 @@ public class StatisticalUtilsArray {
         Arrays.sort(array);
         double median;
         if (array.length % 2 == 0)
-            median = ((double)array[array.length/2] + (double)array[array.length/2 - 1])/2;
+            median = (array[array.length/2] + array[array.length/2 - 1])/2;
         else
-            median = (double) array[array.length/2];
+            median = array[array.length/2];
         return median;
     }
 
@@ -108,7 +108,7 @@ public class StatisticalUtilsArray {
      * @return The standard deviation of the arrayList, as a double value
      */
     public double findStDOfArray(){
-        double std=Stats.of(array).populationStandardDeviation();
+        double std=Stats.of(array).sampleStandardDeviation();
         return std;
     }
 
