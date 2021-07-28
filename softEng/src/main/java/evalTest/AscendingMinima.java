@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
+
+
 public class AscendingMinima {
 
     int WINDOWS_SIZE;
@@ -23,7 +25,8 @@ public class AscendingMinima {
         StatisticalUtilsArrayList sublist=new StatisticalUtilsArrayList();
         double minPerWindow;
         for(int i=0;i<ARRAY_SIZE;i++){
-            sublist.setArrayList((ArrayList<Double>)arrayList.subList(i,i+WINDOWS_SIZE));
+            ArrayList<Double> t1=new ArrayList<Double>(arrayList.subList(i,i+WINDOWS_SIZE));
+            sublist.setArrayList(t1);
             minPerWindow=sublist.findMinOfArrayList();
             ascMin.add(minPerWindow);
         }

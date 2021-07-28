@@ -6,37 +6,89 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
+/**
+ * This class implements 5 statistical utilities that are needed for an ArrayList of doubles
+ * These are: Minimum, Maximum, Median, Mean Value and the Standard Deviation.
+ *
+ * @author Ioannis Papas
+ * @version 2021.1
+ * @since 28/07/2021
+ */
+
 public class StatisticalUtilsArrayList {
+    /**
+     * This variable represents the ArrayList used for getting the statistics
+     */
     ArrayList<Double> arrayList;
 
+    /**
+     * This is the void constructor method of the class, used for initialization
+     */
     StatisticalUtilsArrayList(){ };
+
+    /**
+     * This is the main constructor method of the class, used for initialization
+     *
+     * @param arrayList The arrayList to be used for finding the stats
+     */
 
     StatisticalUtilsArrayList(ArrayList<Double> arrayList){
         this.arrayList=arrayList;
     }
 
+    /**
+     * This is the setter method for the arrayList to be used for finding the stats
+     *
+     * @param arrayList The arrayList to be used for finding the stats, as an double ArrayList
+     */
     public void setArrayList(ArrayList<Double> arrayList){
         this.arrayList=arrayList;
     }
 
+    /**
+     * This is the getter method for the arrayList to be used for finding the stats
+     *
+     * @return The arrayList to be used for finding the stats, as an double ArrayList
+     */
+    public ArrayList<Double> getArrayList(){
+        return arrayList;
+    }
+
+    /**
+     * This is a method that finds the minimum value of the array list
+     *
+     * @return The minimum value of the arrayList, as a double value
+     */
     public double findMinOfArrayList(){
         double min= Stats.of(arrayList).min();
-        //double min= Arrays.stream(array).min().getAsDouble();
         return min;
     }
 
+    /**
+     * This is a method that finds the maximum value of the array list
+     *
+     * @return The maximum value of the array list, as a double value
+     */
     public double findMaxOfArrayList(){
         double max=Stats.of(arrayList).max();
-        //double max= Arrays.stream(array).max().getAsDouble();
         return max;
     }
 
+    /**
+     * This is a method that finds the mean value of the array list
+     *
+     * @return The mean value of the arrayList, as a double value
+     */
     public double findMeanOfArrayList(){
         double mean=Stats.of(arrayList).mean();
-        //double mean=Arrays.stream(array).average().getAsDouble();
         return mean;
     }
 
+    /**
+     * This is a method that finds the median value of the array list
+     *
+     * @return The median value of the List, as a double value
+     */
     public double findMedianOfArrayList(){
         Collections.sort(arrayList);
         double median;
@@ -47,8 +99,13 @@ public class StatisticalUtilsArrayList {
         return median;
     }
 
+    /**
+     * This is a method that finds the standard deviation of the array list
+     *
+     * @return The standard deviation of the array, as a double value
+     */
     public double findStDOfArrayList(){
         double std=Stats.of(arrayList).populationStandardDeviation();
         return std;
     }
-        }
+}
