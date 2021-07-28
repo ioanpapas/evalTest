@@ -15,25 +15,29 @@ public class StatisticalUtilsArrayList {
         this.arrayList=arrayList;
     }
 
-    public double findMinOfArray(){
+    public void setArrayList(ArrayList<Double> arrayList){
+        this.arrayList=arrayList;
+    }
+
+    public double findMinOfArrayList(){
         double min= Stats.of(arrayList).min();
         //double min= Arrays.stream(array).min().getAsDouble();
         return min;
     }
 
-    public double findMaxOfArray(){
+    public double findMaxOfArrayList(){
         double max=Stats.of(arrayList).max();
         //double max= Arrays.stream(array).max().getAsDouble();
         return max;
     }
 
-    public double findMeanOfArray(){
+    public double findMeanOfArrayList(){
         double mean=Stats.of(arrayList).mean();
         //double mean=Arrays.stream(array).average().getAsDouble();
         return mean;
     }
 
-    public double findMedianOfArray(){
+    public double findMedianOfArrayList(){
         Collections.sort(arrayList);
         double median;
         if (arrayList.size() % 2 == 0)
@@ -43,7 +47,7 @@ public class StatisticalUtilsArrayList {
         return median;
     }
 
-    public double findStDOfArray(){
+    public double findStDOfArrayList(){
         double std=Stats.of(arrayList).populationStandardDeviation();
         return std;
     }
