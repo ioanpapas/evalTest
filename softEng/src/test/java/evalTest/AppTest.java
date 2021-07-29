@@ -115,7 +115,7 @@ public class AppTest
     StatisticalUtilsArrayList arrList3=new StatisticalUtilsArrayList(testArrayList3);
     @Test
     public void testStatsOfArrayList3(){
-        assertEquals(Double.MIN_VALUE, arrList3.findMinOfArrayList(),0.01);
+        assertEquals(Double.MIN_VALUE,arrList3.findMinOfArrayList(),0.01);
         assertEquals(Double.MIN_VALUE,arrList3.findMaxOfArrayList(),0.01);
         assertEquals(Double.MIN_VALUE,arrList3.findMeanOfArrayList(),0.01);
         assertEquals(Double.MIN_VALUE,arrList3.findMedianOfArrayList(),0.01);
@@ -146,7 +146,21 @@ public class AppTest
         assertArrayEquals(actual, expected);
     }
 
-
+    /**
+     * Test for the Ascending Minima when the windows size is bigger than the arrayList size
+     * @link AscendingMinima Class
+     */
+    ArrayList<Double> arrayList2=new ArrayList<Double>(){
+        {
+            add((double)1);
+        }
+    };
+    int windows_size2=3;
+    AscendingMinima ascMin2=new AscendingMinima(windows_size2, arrayList2.size(),arrayList2);
+    @Test
+    public void testAscendingMinima2(){
+        assertEquals(0,ascMin2.findAscendingMinima().size());
+    }
 
 
 

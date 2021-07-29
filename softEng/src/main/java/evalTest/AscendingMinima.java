@@ -55,6 +55,10 @@ public class AscendingMinima {
      */
     public Queue<Double> findAscendingMinima() {
         Queue<Double> ascMin=new LinkedList<Double>();
+        if (WINDOWS_SIZE>ARRAY_SIZE){
+            System.out.println("Windows size is bigger than the array size");
+            return ascMin;
+        }
         StatisticalUtilsArrayList sublist=new StatisticalUtilsArrayList();
         double minPerWindow;
         for(int i=0;i<ARRAY_SIZE;i++){
