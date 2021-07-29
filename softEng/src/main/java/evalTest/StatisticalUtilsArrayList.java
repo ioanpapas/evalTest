@@ -105,7 +105,7 @@ public class StatisticalUtilsArrayList {
      * @return The standard deviation of the array, as a double value
      */
     public double findStDOfArrayList(){
-        double std=Stats.of(arrayList).populationStandardDeviation();
+        double std=Stats.of(arrayList).sampleStandardDeviation();
         return std;
     }
 }

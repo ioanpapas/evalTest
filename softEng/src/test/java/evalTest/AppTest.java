@@ -24,6 +24,10 @@ public class AppTest
         assertTrue( true );
     }
 
+    /**
+     * Test for the statistical utils for an array
+     * @link StatisticalUtilsArray Class
+     */
     double[] testArray={3,5,2,8,9,13,20,1,15};
     StatisticalUtilsArray arr=new StatisticalUtilsArray(testArray);
     @Test
@@ -35,12 +39,13 @@ public class AppTest
         assertEquals(6.4829,arr.findStDOfArray(),0.01);
     }
 
+    /**
+     * Test for the statistical utils for an array
+     * @link StatisticalUtilsArray Class
+     */
     double[] testArray1={1,1,1};
     StatisticalUtilsArray arr1=new StatisticalUtilsArray(testArray1);
 
-    /**
-     * @link StatisticalUtilsArray
-     */
     @Test
     public void testStatsOfArray2(){
         assertEquals(1,arr1.findMinOfArray(),0.01);
@@ -50,6 +55,37 @@ public class AppTest
         assertEquals(0,arr1.findStDOfArray(),0.01);
     }
 
+    /**
+     * Test for the statistical utils for an arraylist
+     * @link StatisticalUtilsArrayList Class
+     */
+    ArrayList<Double> testArrayList=new ArrayList<Double>(){
+        {
+            add((double)3);
+            add((double)5);
+            add((double)2);
+            add((double)8);
+            add((double)9);
+            add((double)13);
+            add((double)20);
+            add((double)1);
+            add((double)15);
+        }
+    };
+    StatisticalUtilsArrayList arrList=new StatisticalUtilsArrayList(testArrayList);
+    @Test
+    public void testStatsOfArrayList1(){
+        assertEquals(1, arrList.findMinOfArrayList(),0.01);
+        assertEquals(20,arrList.findMaxOfArrayList(),0.01);
+        assertEquals((double)76/9,arrList.findMeanOfArrayList(),0.01);
+        assertEquals(8,arrList.findMedianOfArrayList(),0.01);
+        assertEquals(6.4829,arrList.findStDOfArrayList(),0.01);
+    }
+
+    /**
+     * Test for the Ascending Minima
+     * @link AscendingMinima Class
+     */
     ArrayList<Double> arrayList=new ArrayList<Double>(){
         {
             add((double)5);
@@ -70,6 +106,8 @@ public class AppTest
     public void testAscendingMinima(){
         assertArrayEquals(actual, expected);
     }
+
+
 
 
 
