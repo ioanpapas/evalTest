@@ -60,6 +60,10 @@ public class StatisticalUtilsArray {
      * @return The minimum value of the array, as a double value
      */
     public double findMinOfArray(){
+        if (array.length==0){
+            System.out.println("Array is empty");
+            return Double.MIN_VALUE;
+        }
         double min=Stats.of(array).min();
         //double min= Arrays.stream(array).min().getAsDouble();
         return min;
@@ -71,6 +75,10 @@ public class StatisticalUtilsArray {
      * @return The maximum value of the array, as a double value
      */
     public double findMaxOfArray(){
+        if (array.length==0){
+            System.out.println("Array is empty");
+            return Double.MIN_VALUE;
+        }
         double max=Stats.of(array).max();
         //double max= Arrays.stream(array).max().getAsDouble();
         return max;
@@ -82,6 +90,10 @@ public class StatisticalUtilsArray {
      * @return The mean value of the array, as a double value
      */
     public double findMeanOfArray(){
+        if (array.length==0){
+            System.out.println("Array is empty");
+            return Double.MIN_VALUE;
+        }
         double mean=Stats.of(array).mean();
         //double mean=Arrays.stream(array).average().getAsDouble();
         return mean;
@@ -93,6 +105,10 @@ public class StatisticalUtilsArray {
      * @return The median value of the array, as a double value
      */
     public double findMedianOfArray(){
+        if (array.length==0){
+            System.out.println("Array is empty");
+            return Double.MIN_VALUE;
+        }
         Arrays.sort(array);
         double median;
         if (array.length % 2 == 0)
@@ -108,6 +124,10 @@ public class StatisticalUtilsArray {
      * @return The standard deviation of the arrayList, as a double value
      */
     public double findStDOfArray(){
+        if (array.length==0){
+            System.out.println("Array is empty");
+            return Double.MIN_VALUE;
+        }
         double std=Stats.of(array).sampleStandardDeviation();
         return std;
     }

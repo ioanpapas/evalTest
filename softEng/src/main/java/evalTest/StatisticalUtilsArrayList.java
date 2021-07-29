@@ -60,6 +60,9 @@ public class StatisticalUtilsArrayList {
      * @return The minimum value of the arrayList, as a double value
      */
     public double findMinOfArrayList(){
+        if(arrayList.size()==0){
+            return Double.MIN_VALUE;
+        }
         double min= Stats.of(arrayList).min();
         return min;
     }
@@ -70,6 +73,9 @@ public class StatisticalUtilsArrayList {
      * @return The maximum value of the array list, as a double value
      */
     public double findMaxOfArrayList(){
+        if(arrayList.size()==0){
+            return Double.MIN_VALUE;
+        }
         double max=Stats.of(arrayList).max();
         return max;
     }
@@ -80,6 +86,9 @@ public class StatisticalUtilsArrayList {
      * @return The mean value of the arrayList, as a double value
      */
     public double findMeanOfArrayList(){
+        if(arrayList.size()==0){
+            return Double.MIN_VALUE;
+        }
         double mean=Stats.of(arrayList).mean();
         return mean;
     }
@@ -90,6 +99,9 @@ public class StatisticalUtilsArrayList {
      * @return The median value of the List, as a double value
      */
     public double findMedianOfArrayList(){
+        if(arrayList.size()==0){
+            return Double.MIN_VALUE;
+        }
         Collections.sort(arrayList);
         double median;
         if (arrayList.size() % 2 == 0)
@@ -105,6 +117,9 @@ public class StatisticalUtilsArrayList {
      * @return The standard deviation of the array, as a double value
      */
     public double findStDOfArrayList(){
+        if(arrayList.size()==0){
+            return Double.MIN_VALUE;
+        }
         double std=Stats.of(arrayList).sampleStandardDeviation();
         return std;
     }

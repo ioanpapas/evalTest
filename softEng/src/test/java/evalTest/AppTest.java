@@ -16,15 +16,6 @@ import static org.junit.Assert.*;
 public class AppTest 
 {
     /**
-     * Rigorous Test :-)
-     */
-    @Test
-    public void shouldAnswerWithTrue()
-    {
-        assertTrue( true );
-    }
-
-    /**
      * Test for the statistical utils for an array
      * @link StatisticalUtilsArray Class
      */
@@ -45,7 +36,6 @@ public class AppTest
      */
     double[] testArray1={1,1,1};
     StatisticalUtilsArray arr1=new StatisticalUtilsArray(testArray1);
-
     @Test
     public void testStatsOfArray2(){
         assertEquals(1,arr1.findMinOfArray(),0.01);
@@ -53,6 +43,21 @@ public class AppTest
         assertEquals(1,arr1.findMeanOfArray(),0.01);
         assertEquals(1,arr1.findMedianOfArray(),0.01);
         assertEquals(0,arr1.findStDOfArray(),0.01);
+    }
+
+    /**
+     * Test for the statistical utils for an array, if the array is empty
+     * @link StatisticalUtilsArray Class
+     */
+    double[] testArray2={};
+    StatisticalUtilsArray arr2=new StatisticalUtilsArray(testArray2);
+    @Test
+    public void testStatsOfArray3(){
+        assertEquals(Double.MIN_VALUE,arr2.findMinOfArray(),0.01);
+        assertEquals(Double.MIN_VALUE,arr2.findMaxOfArray(),0.01);
+        assertEquals(Double.MIN_VALUE,arr2.findMeanOfArray(),0.01);
+        assertEquals(Double.MIN_VALUE,arr2.findMedianOfArray(),0.01);
+        assertEquals(Double.MIN_VALUE,arr2.findStDOfArray(),0.01);
     }
 
     /**
@@ -81,7 +86,41 @@ public class AppTest
         assertEquals(8,arrList.findMedianOfArrayList(),0.01);
         assertEquals(6.4829,arrList.findStDOfArrayList(),0.01);
     }
+    /**
+     * Test for the statistical utils for an arraylist
+     * @link StatisticalUtilsArrayList Class
+     */
+    ArrayList<Double> testArrayList2=new ArrayList<Double>(){
+        {
+            add((double)1);
+            add((double)1);
+            add((double)1);
+        }
+    };
+    StatisticalUtilsArrayList arrList2=new StatisticalUtilsArrayList(testArrayList2);
+    @Test
+    public void testStatsOfArrayList2(){
+        assertEquals(1, arrList2.findMinOfArrayList(),0.01);
+        assertEquals(1,arrList2.findMaxOfArrayList(),0.01);
+        assertEquals(1,arrList2.findMeanOfArrayList(),0.01);
+        assertEquals(1,arrList2.findMedianOfArrayList(),0.01);
+        assertEquals(0,arrList2.findStDOfArrayList(),0.01);
+    }
 
+    /**
+     * Test for the statistical utils for an arraylist if arrayList is empty
+     * @link StatisticalUtilsArrayList Class
+     */
+    ArrayList<Double> testArrayList3=new ArrayList<Double>();
+    StatisticalUtilsArrayList arrList3=new StatisticalUtilsArrayList(testArrayList3);
+    @Test
+    public void testStatsOfArrayList3(){
+        assertEquals(Double.MIN_VALUE, arrList3.findMinOfArrayList(),0.01);
+        assertEquals(Double.MIN_VALUE,arrList3.findMaxOfArrayList(),0.01);
+        assertEquals(Double.MIN_VALUE,arrList3.findMeanOfArrayList(),0.01);
+        assertEquals(Double.MIN_VALUE,arrList3.findMedianOfArrayList(),0.01);
+        assertEquals(Double.MIN_VALUE,arrList3.findStDOfArrayList(),0.01);
+    }
     /**
      * Test for the Ascending Minima
      * @link AscendingMinima Class
