@@ -61,6 +61,7 @@ public class StatisticalUtilsArrayList {
      */
     public double findMinOfArrayList(){
         if(arrayList.size()==0){
+            System.out.println("ArrayList is empty");
             return Double.MIN_VALUE;
         }
         double min= Stats.of(arrayList).min();
@@ -74,6 +75,7 @@ public class StatisticalUtilsArrayList {
      */
     public double findMaxOfArrayList(){
         if(arrayList.size()==0){
+            System.out.println("ArrayList is empty");
             return Double.MIN_VALUE;
         }
         double max=Stats.of(arrayList).max();
@@ -87,6 +89,7 @@ public class StatisticalUtilsArrayList {
      */
     public double findMeanOfArrayList(){
         if(arrayList.size()==0){
+            System.out.println("ArrayList is empty");
             return Double.MIN_VALUE;
         }
         double mean=Stats.of(arrayList).mean();
@@ -100,6 +103,7 @@ public class StatisticalUtilsArrayList {
      */
     public double findMedianOfArrayList(){
         if(arrayList.size()==0){
+            System.out.println("ArrayList is empty");
             return Double.MIN_VALUE;
         }
         Collections.sort(arrayList);
@@ -118,6 +122,7 @@ public class StatisticalUtilsArrayList {
      */
     public double findStDOfArrayList(){
         if(arrayList.size()==0){
+            System.out.println("ArrayList is empty");
             return Double.MIN_VALUE;
         }
         double std=Stats.of(arrayList).sampleStandardDeviation();
