@@ -17,6 +17,7 @@ public class AppTest
 {
     /**
      * Test for the statistical utils for an array
+     *
      * @link StatisticalUtilsArray Class
      */
     double[] testArray={3,5,2,8,9,13,20,1,15};
@@ -32,6 +33,7 @@ public class AppTest
 
     /**
      * Test for the statistical utils for an array
+     *
      * @link StatisticalUtilsArray Class
      */
     double[] testArray1={1,1,1};
@@ -47,6 +49,7 @@ public class AppTest
 
     /**
      * Test for the statistical utils for an array, if the array is empty
+     *
      * @link StatisticalUtilsArray Class
      */
     double[] testArray2={};
@@ -62,6 +65,7 @@ public class AppTest
 
     /**
      * Test for the statistical utils for an arraylist
+     *
      * @link StatisticalUtilsArrayList Class
      */
     ArrayList<Double> testArrayList=new ArrayList<Double>(){
@@ -88,6 +92,7 @@ public class AppTest
     }
     /**
      * Test for the statistical utils for an arraylist
+     *
      * @link StatisticalUtilsArrayList Class
      */
     ArrayList<Double> testArrayList2=new ArrayList<Double>(){
@@ -109,6 +114,7 @@ public class AppTest
 
     /**
      * Test for the statistical utils for an arraylist if arrayList is empty
+     *
      * @link StatisticalUtilsArrayList Class
      */
     ArrayList<Double> testArrayList3=new ArrayList<Double>();
@@ -123,6 +129,7 @@ public class AppTest
     }
     /**
      * Test for the Ascending Minima
+     *
      * @link AscendingMinima Class
      */
     ArrayList<Double> arrayList=new ArrayList<Double>(){
@@ -148,6 +155,7 @@ public class AppTest
 
     /**
      * Test for the Ascending Minima when the windows size is bigger than the arrayList size
+     *
      * @link AscendingMinima Class
      */
     ArrayList<Double> arrayList2=new ArrayList<Double>(){
