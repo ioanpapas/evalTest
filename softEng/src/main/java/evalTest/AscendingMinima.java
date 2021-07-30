@@ -41,6 +41,11 @@ public class AscendingMinima {
      *
      * @param ws The window size
      * @param arrayList The array to be used
+     *
+     * @throws IllegalArgumentException when the window size is not positive
+     * @throws IllegalArgumentException when the window size is greater than the array size
+     * @throws IllegalArgumentException when the array list is empty
+     * 
      */
     AscendingMinima(int ws,  ArrayList<Double> arrayList){
         this.WINDOWS_SIZE=ws;
@@ -101,6 +106,8 @@ public class AscendingMinima {
      * The setter method for the window size
      *
      * @param WINDOWS_SIZE the new window size, as an integer value
+     *
+     * @throws IllegalArgumentException when the window size is not positive
      */
     public void setWINDOWS_SIZE(int WINDOWS_SIZE) {
         if(WINDOWS_SIZE<=0){

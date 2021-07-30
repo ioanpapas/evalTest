@@ -13,6 +13,7 @@ import java.util.Collections;
  * @author Ioannis Papas
  * @version 2021.1
  * @since 28/07/2021
+ *
  */
 
 public class StatisticalUtilsArrayList {

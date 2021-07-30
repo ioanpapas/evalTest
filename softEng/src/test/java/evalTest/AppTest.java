@@ -165,8 +165,4 @@ public class AppTest
         AscendingMinima ascMin2=new AscendingMinima(windows_size2,arrayList2);
     }
 
-
-
-
-
 }
