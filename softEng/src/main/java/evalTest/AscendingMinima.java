@@ -28,7 +28,8 @@ public class AscendingMinima {
     /**
      * This variable represents the array size
      */
-    int ARRAY_SIZE=arrayList.size();
+    int ARRAY_SIZE;
+
 
     /**
      * This is the void constructor method of the class, used for initialization
@@ -42,6 +43,9 @@ public class AscendingMinima {
      * @param arrayList The array to be used
      */
     AscendingMinima(int ws,  ArrayList<Double> arrayList){
+        this.WINDOWS_SIZE=ws;
+        this.arrayList=arrayList;
+        this.ARRAY_SIZE=arrayList.size();
         //If window size is bigger than array size then the algorithm can't create the first window so, it can't continue further
         if (ws>ARRAY_SIZE){
             throw new IllegalArgumentException("Window size can't be greater than array size but found: window size=" +ws+" array size="+ARRAY_SIZE);
@@ -54,8 +58,7 @@ public class AscendingMinima {
         if(ws<=0){
             throw new IllegalArgumentException("Window size must be positive, found: " +ws);
         }
-        this.WINDOWS_SIZE=ws;
-        this.arrayList=arrayList;
+
     }
 
     /**
@@ -136,14 +139,17 @@ public class AscendingMinima {
         //size plus 1. If the array size is 5 and the window size is 3 then the algorithm will go as follows:
         //0-1-2, 1-2-3, 2-3-4, end. That means the algorithm will find 3 minimums to return and so 5-3+1=3.
         ArrayList<Double> ascMin=new ArrayList<>(ARRAY_SIZE-WINDOWS_SIZE+1);
+        //find the minimum of the first window and add it to the arraylist to be returned
+        ascMin.add(StatisticalUtilsArrayList.findMinOfArrayList(window));
 
         for(int i=1;i<ARRAY_SIZE-WINDOWS_SIZE+1;i++){
-            //find the minimum of the current window and add it to the arraylist to be returned
-            ascMin.set(i-1,StatisticalUtilsArrayList.findMinOfArrayList(window));
+            System.out.println(window.toString());
             //remove the first element from the window
             window.remove(0);
             //add the next element from the array list to the window
             window.add(arrayList.get(i+WINDOWS_SIZE-1));
+            //find the minimum of the current window and add it to the arraylist to be returned
+            ascMin.add(StatisticalUtilsArrayList.findMinOfArrayList(window));
         }
 
         return ascMin;
