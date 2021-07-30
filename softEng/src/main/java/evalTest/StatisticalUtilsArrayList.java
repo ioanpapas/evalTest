@@ -2,9 +2,8 @@ package evalTest;
 
 import com.google.common.math.Stats;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * This class implements 5 statistical utilities that are needed for an ArrayList of doubles
@@ -30,7 +29,8 @@ public class StatisticalUtilsArrayList {
             System.out.println("ArrayList is empty");
             return Double.MIN_VALUE;
         }
-        return Stats.of(arrayList).min();
+        //return Stats.of(arrayList).min();
+        return arrayList.stream().mapToDouble(v->v).min().orElseThrow(NoSuchElementException::new);
     }
 
     /**
@@ -47,7 +47,8 @@ public class StatisticalUtilsArrayList {
             return Double.MIN_VALUE;
         }
 
-        return Stats.of(arrayList).max();
+        //return Stats.of(arrayList).max();
+        return arrayList.stream().mapToDouble(v->v).max().orElseThrow(NoSuchElementException::new);
     }
 
     /**
@@ -63,7 +64,8 @@ public class StatisticalUtilsArrayList {
             System.out.println("ArrayList is empty");
             return Double.MIN_VALUE;
         }
-        return Stats.of(arrayList).mean();
+        //return Stats.of(arrayList).mean();
+        return (arrayList.stream().mapToDouble(v->v).sum())/(arrayList.stream().count());
     }
 
     /**
@@ -79,12 +81,17 @@ public class StatisticalUtilsArrayList {
             System.out.println("ArrayList is empty");
             return Double.MIN_VALUE;
         }
-        Collections.sort(arrayList);
-        double median;
-        if (arrayList.size() % 2 == 0)
-            return ((double)arrayList.get(arrayList.size()/2) + (double)arrayList.get(arrayList.size()/2 - 1))/2;
+        List<Double> sorted=arrayList.stream().sorted().collect(Collectors.toList());
+        if (sorted.size() % 2 == 0)
+            return ((double)sorted.get(sorted.size()/2) + (double)sorted.get(sorted.size()/2 - 1))/2;
         else
-            return (double) arrayList.get(arrayList.size()/2);
+            return (double) sorted.get(sorted.size()/2);
+
+        //Collections.sort(arrayList);
+        //if (arrayList.size() % 2 == 0)
+        //    return ((double)arrayList.get(arrayList.size()/2) + (double)arrayList.get(arrayList.size()/2 - 1))/2;
+        //else
+        //    return (double) arrayList.get(arrayList.size()/2);
     }
 
     /**
@@ -100,6 +107,15 @@ public class StatisticalUtilsArrayList {
             System.out.println("ArrayList is empty");
             return Double.MIN_VALUE;
         }
-        return Stats.of(arrayList).sampleStandardDeviation();
+        //return Stats.of(arrayList).sampleStandardDeviation();
+
+        //find the mean of our data
+        double mean=StatisticalUtilsArrayList.findMeanOfArrayList(arrayList);
+        //normalize the data subtracting the mean value
+        List<Double> normalized=arrayList.stream().map(value->value-mean).collect(Collectors.toList());
+        //find the sample variance by summing up all normalized values squared and divided by the number of samples minus 1
+        double var=normalized.stream().map(value->value*value).collect(Collectors.toList()).stream().mapToDouble(v->v).sum()/(normalized.stream().count()-1);
+        //return the square root of the variance which is the standard deviation
+        return Math.sqrt(var);
     }
 }

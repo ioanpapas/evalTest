@@ -45,7 +45,7 @@ public class AscendingMinima {
      * @throws IllegalArgumentException when the window size is not positive
      * @throws IllegalArgumentException when the window size is greater than the array size
      * @throws IllegalArgumentException when the array list is empty
-     * 
+     *
      */
     AscendingMinima(int ws,  ArrayList<Double> arrayList){
         this.WINDOWS_SIZE=ws;
@@ -150,7 +150,6 @@ public class AscendingMinima {
         ascMin.add(StatisticalUtilsArrayList.findMinOfArrayList(window));
 
         for(int i=1;i<ARRAY_SIZE-WINDOWS_SIZE+1;i++){
-            System.out.println(window.toString());
             //remove the first element from the window
             window.remove(0);
             //add the next element from the array list to the window
