@@ -2,7 +2,7 @@ package evalTest;
 
 import com.google.common.math.Stats;
 
-import java.util.ArrayList;
+
 import java.util.Arrays;
 import java.util.stream.Stream;
 
@@ -30,9 +30,8 @@ public class StatisticalUtilsArray {
             System.out.println("Array is empty");
             return Double.MIN_VALUE;
         }
-        double min=Stats.of(array).min();
+        return Stats.of(array).min();
         //double min= Arrays.stream(array).min().getAsDouble();
-        return min;
     }
 
     /**
@@ -47,9 +46,8 @@ public class StatisticalUtilsArray {
             System.out.println("Array is empty");
             return Double.MIN_VALUE;
         }
-        double max=Stats.of(array).max();
+        return Stats.of(array).max();
         //double max= Arrays.stream(array).max().getAsDouble();
-        return max;
     }
 
     /**
@@ -64,9 +62,8 @@ public class StatisticalUtilsArray {
             System.out.println("Array is empty");
             return Double.MIN_VALUE;
         }
-        double mean=Stats.of(array).mean();
+        return Stats.of(array).mean();
         //double mean=Arrays.stream(array).average().getAsDouble();
-        return mean;
     }
 
     /**
@@ -84,10 +81,9 @@ public class StatisticalUtilsArray {
         Arrays.sort(array);
         double median;
         if (array.length % 2 == 0)
-            median = (array[array.length/2] + array[array.length/2 - 1])/2;
+            return (array[array.length/2] + array[array.length/2 - 1])/2;
         else
-            median = array[array.length/2];
-        return median;
+            return array[array.length/2];
     }
 
     /**
@@ -102,8 +98,7 @@ public class StatisticalUtilsArray {
             System.out.println("Array is empty");
             return Double.MIN_VALUE;
         }
-        double std=Stats.of(array).sampleStandardDeviation();
-        return std;
+        return Stats.of(array).sampleStandardDeviation();
     }
 
 }
