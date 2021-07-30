@@ -42,6 +42,18 @@ public class AscendingMinima {
      * @param arrayList The array to be used
      */
     AscendingMinima(int ws, int as, ArrayList<Double> arrayList){
+        //If window size is bigger than array size then the algorithm can't create the first window so, it can't continue further
+        if (ws>as){
+            throw new IllegalArgumentException("Window size can't be greater than array size but found: window size=" +ws+" array size="+as);
+        }
+        //If the array is empty the algorithm can't run
+        if (arrayList.size()==0){
+            throw new IllegalArgumentException("Array is empty. Can't use algorithm");
+        }
+        //Can't create window with negative or zero size
+        if(ws<=0){
+            throw new IllegalArgumentException("Window size must be positive, found: " +ws);
+        }
         this.WINDOWS_SIZE=ws;
         this.ARRAY_SIZE=as;
         this.arrayList=arrayList;

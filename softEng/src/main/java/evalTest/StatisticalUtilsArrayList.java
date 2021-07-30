@@ -17,91 +17,63 @@ import java.util.Collections;
 
 public class StatisticalUtilsArrayList {
     /**
-     * This variable represents the ArrayList used for getting the statistics
-     */
-    ArrayList<Double> arrayList;
-
-    /**
-     * This is the void constructor method of the class, used for initialization
-     */
-    StatisticalUtilsArrayList(){ };
-
-    /**
-     * This is the main constructor method of the class, used for initialization
-     *
-     * @param arrayList The arrayList to be used for finding the stats
-     */
-
-    StatisticalUtilsArrayList(ArrayList<Double> arrayList){
-        this.arrayList=arrayList;
-    }
-
-    /**
-     * This is the setter method for the arrayList to be used for finding the stats
-     *
-     * @param arrayList The arrayList to be used for finding the stats, as an double ArrayList
-     */
-    public void setArrayList(ArrayList<Double> arrayList){
-        this.arrayList=arrayList;
-    }
-
-    /**
-     * This is the getter method for the arrayList to be used for finding the stats
-     *
-     * @return The arrayList to be used for finding the stats, as an double ArrayList
-     */
-    public ArrayList<Double> getArrayList(){
-        return arrayList;
-    }
-
-    /**
      * This is a method that finds the minimum value of the array list
+     *
+     * @param arrayList the arrayList used to find the minimum, with double values
      *
      * @return The minimum value of the arrayList, as a double value
      */
-    public double findMinOfArrayList(){
+
+    public static double findMinOfArrayList(ArrayList<Double> arrayList){
         if(arrayList.size()==0){
             System.out.println("ArrayList is empty");
             return Double.MIN_VALUE;
         }
-        double min= Stats.of(arrayList).min();
-        return min;
+        return Stats.of(arrayList).min();
     }
 
     /**
      * This is a method that finds the maximum value of the array list
      *
+     * @param arrayList the arrayList used to find the maximum, with double values
+     *
      * @return The maximum value of the array list, as a double value
      */
-    public double findMaxOfArrayList(){
+
+    public static double findMaxOfArrayList(ArrayList<Double> arrayList){
         if(arrayList.size()==0){
             System.out.println("ArrayList is empty");
             return Double.MIN_VALUE;
         }
-        double max=Stats.of(arrayList).max();
-        return max;
+
+        return Stats.of(arrayList).max();
     }
 
     /**
      * This is a method that finds the mean value of the array list
      *
+     * @param arrayList the arrayList used to find the mean, with double values
+     *
      * @return The mean value of the arrayList, as a double value
      */
-    public double findMeanOfArrayList(){
+
+    public static double findMeanOfArrayList(ArrayList<Double> arrayList){
         if(arrayList.size()==0){
             System.out.println("ArrayList is empty");
             return Double.MIN_VALUE;
         }
-        double mean=Stats.of(arrayList).mean();
-        return mean;
+        return Stats.of(arrayList).mean();
     }
 
     /**
      * This is a method that finds the median value of the array list
      *
+     * @param arrayList the arrayList used to find the median, with double values
+     *
      * @return The median value of the List, as a double value
      */
-    public double findMedianOfArrayList(){
+
+    public static double findMedianOfArrayList(ArrayList<Double> arrayList){
         if(arrayList.size()==0){
             System.out.println("ArrayList is empty");
             return Double.MIN_VALUE;
@@ -109,23 +81,24 @@ public class StatisticalUtilsArrayList {
         Collections.sort(arrayList);
         double median;
         if (arrayList.size() % 2 == 0)
-            median = ((double)arrayList.get(arrayList.size()/2) + (double)arrayList.get(arrayList.size()/2 - 1))/2;
+            return ((double)arrayList.get(arrayList.size()/2) + (double)arrayList.get(arrayList.size()/2 - 1))/2;
         else
-            median = (double) arrayList.get(arrayList.size()/2);
-        return median;
+            return (double) arrayList.get(arrayList.size()/2);
     }
 
     /**
      * This is a method that finds the standard deviation of the array list
      *
+     * @param arrayList the arrayList used to find the standard deviation, with double values
+     *
      * @return The standard deviation of the array, as a double value
      */
-    public double findStDOfArrayList(){
+
+    public static double findStDOfArrayList(ArrayList<Double> arrayList){
         if(arrayList.size()==0){
             System.out.println("ArrayList is empty");
             return Double.MIN_VALUE;
         }
-        double std=Stats.of(arrayList).sampleStandardDeviation();
-        return std;
+        return Stats.of(arrayList).sampleStandardDeviation();
     }
 }

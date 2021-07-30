@@ -17,49 +17,15 @@ import java.util.stream.Stream;
 
 
 public class StatisticalUtilsArray {
-    /**
-     * This variable represents the array used for getting the statistics
-     */
-    double[] array;
-
-    /**
-     * This is the void constructor method of the class, used for initialization
-     */
-    StatisticalUtilsArray(){ };
-
-    /**
-     * This is the main constructor method of the class, used for initialization
-     *
-     * @param array The array to be used for finding the stats
-     */
-    StatisticalUtilsArray(double[] array){
-        this.array=array;
-    }
-
-    /**
-     * This is the setter method for the array to be used for finding the stats
-     *
-     * @param array The array to be used for finding the stats, as an double array
-     */
-    public void setArrayList(double[] array){
-        this.array=array;
-    }
-
-    /**
-     * This is the getter method for the array to be used for finding the stats
-     *
-     * @return The array to be used for finding the stats, as an double Array
-     */
-    public double[] getArrayList(){
-        return array;
-    }
 
     /**
      * This is a method that finds the minimum value of the array
      *
+     * @param array the array used to find the minimum, with double values
+     *
      * @return The minimum value of the array, as a double value
      */
-    public double findMinOfArray(){
+    public static double findMinOfArray(double[] array){
         if (array.length==0){
             System.out.println("Array is empty");
             return Double.MIN_VALUE;
@@ -72,9 +38,11 @@ public class StatisticalUtilsArray {
     /**
      * This is a method that finds the maximum value of the array
      *
+     * @param array the array used to find the maximum, with double values
+     *
      * @return The maximum value of the array, as a double value
      */
-    public double findMaxOfArray(){
+    public static double findMaxOfArray(double[] array){
         if (array.length==0){
             System.out.println("Array is empty");
             return Double.MIN_VALUE;
@@ -87,9 +55,11 @@ public class StatisticalUtilsArray {
     /**
      * This is a method that finds the mean value of the array
      *
+     * @param array the array used to find the mean, with double values
+     *
      * @return The mean value of the array, as a double value
      */
-    public double findMeanOfArray(){
+    public static double findMeanOfArray(double[] array){
         if (array.length==0){
             System.out.println("Array is empty");
             return Double.MIN_VALUE;
@@ -102,9 +72,11 @@ public class StatisticalUtilsArray {
     /**
      * This is a method that finds the median value of the array
      *
+     * @param array the array used to find the median, with double values
+     *
      * @return The median value of the array, as a double value
      */
-    public double findMedianOfArray(){
+    public static double findMedianOfArray(double[] array){
         if (array.length==0){
             System.out.println("Array is empty");
             return Double.MIN_VALUE;
@@ -121,9 +93,11 @@ public class StatisticalUtilsArray {
     /**
      * This is a method that finds the standard deviation of the array
      *
+     * @param array the array used to find the standard deviation, with double values
+     *
      * @return The standard deviation of the arrayList, as a double value
      */
-    public double findStDOfArray(){
+    public static double findStDOfArray(double[] array){
         if (array.length==0){
             System.out.println("Array is empty");
             return Double.MIN_VALUE;
