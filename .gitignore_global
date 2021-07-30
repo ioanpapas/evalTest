@@ -1,7 +1,6 @@
 #files
 *.iml
 
-#directories
+#dirs
 target/
 .idea/
-
