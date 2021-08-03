@@ -103,6 +103,19 @@ public class AppTest
         assertEquals(0, StatisticalUtilsArrayList.findStDOfArrayList(testArrayList2),0.01);
     }
 
+    ArrayList<Integer> testArrayList5=new ArrayList<Integer>(){
+        {
+            add(1);
+            add(1);
+            add(1);
+        }
+    };
+    @Test
+    public void testStatsOfArrayList5() {
+        assertEquals(1,StatisticalUtilsArrayListGenerics.findMinOfArrayList(testArrayList5),0.01);
+        assertEquals(1,StatisticalUtilsArrayListGenerics.findMaxOfArrayList(testArrayList5),0.01);
+    }
+
     /**
      * Test for the statistical utils for an arraylist if arrayList is empty
      *
