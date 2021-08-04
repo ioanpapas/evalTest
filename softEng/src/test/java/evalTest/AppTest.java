@@ -1,10 +1,12 @@
 package evalTest;
 
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
+
+import org.checkerframework.checker.units.qual.A;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
-import static org.junit.Assert.*;
+
 
 /**
  * Unit test for simple App.
@@ -18,27 +20,12 @@ public class AppTest
      */
     double[] testArray={3,5,2,8,9,13,20,1,15};
     @Test
-    public void testStatsOfArray1(){
-        assertEquals(1, StatisticalUtilsArray.findMinOfArray(testArray),0.01);
-        assertEquals(20,StatisticalUtilsArray.findMaxOfArray(testArray),0.01);
-        assertEquals((double)76/9,StatisticalUtilsArray.findMeanOfArray(testArray),0.01);
-        assertEquals(8,StatisticalUtilsArray.findMedianOfArray(testArray),0.01);
-        assertEquals(6.4829,StatisticalUtilsArray.findStDOfArray(testArray),0.01);
-    }
-
-    /**
-     * Test for the statistical utils for an array
-     *
-     * @link StatisticalUtilsArray Class
-     */
-    double[] testArray1={1,1,1};
-    @Test
-    public void testStatsOfArray2(){
-        assertEquals(1,StatisticalUtilsArray.findMinOfArray(testArray1),0.01);
-        assertEquals(1,StatisticalUtilsArray.findMaxOfArray(testArray1),0.01);
-        assertEquals(1,StatisticalUtilsArray.findMeanOfArray(testArray1),0.01);
-        assertEquals(1,StatisticalUtilsArray.findMedianOfArray(testArray1),0.01);
-        assertEquals(0,StatisticalUtilsArray.findStDOfArray(testArray1),0.01);
+    public void statisticalUtilsArrayTest(){
+        Assertions.assertEquals(1, StatisticalUtilsArray.findMinOfArray(testArray),0.01);
+        Assertions.assertEquals(20,StatisticalUtilsArray.findMaxOfArray(testArray),0.01);
+        Assertions.assertEquals((double)76/9,StatisticalUtilsArray.findMeanOfArray(testArray),0.01);
+        Assertions.assertEquals(8,StatisticalUtilsArray.findMedianOfArray(testArray),0.01);
+        Assertions.assertEquals(6.4829,StatisticalUtilsArray.findStDOfArray(testArray),0.01);
     }
 
     /**
@@ -46,14 +33,24 @@ public class AppTest
      *
      * @link StatisticalUtilsArray Class
      */
-    double[] testArray2={};
+    double[] emptyArray={};
     @Test
-    public void testStatsOfArray3(){
-        assertEquals(Double.MIN_VALUE,StatisticalUtilsArray.findMinOfArray(testArray2),0.01);
-        assertEquals(Double.MIN_VALUE,StatisticalUtilsArray.findMaxOfArray(testArray2),0.01);
-        assertEquals(Double.MIN_VALUE,StatisticalUtilsArray.findMeanOfArray(testArray2),0.01);
-        assertEquals(Double.MIN_VALUE,StatisticalUtilsArray.findMedianOfArray(testArray2),0.01);
-        assertEquals(Double.MIN_VALUE,StatisticalUtilsArray.findStDOfArray(testArray2),0.01);
+    public void statisticalUtilsEmptyArrayTest(){
+        Assertions.assertThrows(IllegalArgumentException.class, ()->{
+            StatisticalUtilsArray.findMinOfArray(emptyArray);
+        });
+        Assertions.assertThrows(IllegalArgumentException.class, ()->{
+            StatisticalUtilsArray.findMaxOfArray(emptyArray);
+        });
+        Assertions.assertThrows(IllegalArgumentException.class, ()->{
+            StatisticalUtilsArray.findMeanOfArray(emptyArray);
+        });
+        Assertions.assertThrows(IllegalArgumentException.class, ()->{
+            StatisticalUtilsArray.findMedianOfArray(emptyArray);
+        });
+        Assertions.assertThrows(IllegalArgumentException.class, ()->{
+            StatisticalUtilsArray.findStDOfArray(emptyArray);
+        });
     }
 
     /**
@@ -75,45 +72,12 @@ public class AppTest
         }
     };
     @Test
-    public void testStatsOfArrayList1(){
-        assertEquals(1, StatisticalUtilsArrayList.findMinOfArrayList(testArrayList),0.01);
-        assertEquals(20, StatisticalUtilsArrayList.findMaxOfArrayList(testArrayList),0.01);
-        assertEquals((double)76/9, StatisticalUtilsArrayList.findMeanOfArrayList(testArrayList),0.01);
-        assertEquals(8, StatisticalUtilsArrayList.findMedianOfArrayList(testArrayList),0.01);
-        assertEquals(6.4829, StatisticalUtilsArrayList.findStDOfArrayList(testArrayList),0.01);
-    }
-    /**
-     * Test for the statistical utils for an arraylist
-     *
-     * @link StatisticalUtilsArrayList Class
-     */
-    ArrayList<Double> testArrayList2=new ArrayList<Double>(){
-        {
-            add((double)1);
-            add((double)1);
-            add((double)1);
-        }
-    };
-    @Test
-    public void testStatsOfArrayList2(){
-        assertEquals(1, StatisticalUtilsArrayList.findMinOfArrayList(testArrayList2),0.01);
-        assertEquals(1, StatisticalUtilsArrayList.findMaxOfArrayList(testArrayList2),0.01);
-        assertEquals(1, StatisticalUtilsArrayList.findMeanOfArrayList(testArrayList2),0.01);
-        assertEquals(1, StatisticalUtilsArrayList.findMedianOfArrayList(testArrayList2),0.01);
-        assertEquals(0, StatisticalUtilsArrayList.findStDOfArrayList(testArrayList2),0.01);
-    }
-
-    ArrayList<Integer> testArrayList5=new ArrayList<Integer>(){
-        {
-            add(1);
-            add(1);
-            add(1);
-        }
-    };
-    @Test
-    public void testStatsOfArrayList5() {
-        assertEquals(1,StatisticalUtilsArrayListGenerics.findMinOfArrayList(testArrayList5),0.01);
-        assertEquals(1,StatisticalUtilsArrayListGenerics.findMaxOfArrayList(testArrayList5),0.01);
+    public void StatisticalUtilsArrayListTest(){
+        Assertions.assertEquals(1, StatisticalUtilsArrayList.findMinOfArrayList(testArrayList),0.01);
+        Assertions.assertEquals(20, StatisticalUtilsArrayList.findMaxOfArrayList(testArrayList),0.01);
+        Assertions.assertEquals((double)76/9, StatisticalUtilsArrayList.findMeanOfArrayList(testArrayList),0.01);
+        Assertions.assertEquals(8, StatisticalUtilsArrayList.findMedianOfArrayList(testArrayList),0.01);
+        Assertions.assertEquals(6.4829, StatisticalUtilsArrayList.findStDOfArrayList(testArrayList),0.01);
     }
 
     /**
@@ -121,15 +85,78 @@ public class AppTest
      *
      * @link StatisticalUtilsArrayList Class
      */
-    ArrayList<Double> testArrayList3=new ArrayList<Double>();
+    ArrayList<Double> emptyArrayList=new ArrayList<Double>();
     @Test
-    public void testStatsOfArrayList3(){
-        assertEquals(Double.MIN_VALUE,StatisticalUtilsArrayList.findMinOfArrayList(testArrayList3),0.01);
-        assertEquals(Double.MIN_VALUE,StatisticalUtilsArrayList.findMaxOfArrayList(testArrayList3),0.01);
-        assertEquals(Double.MIN_VALUE,StatisticalUtilsArrayList.findMeanOfArrayList(testArrayList3),0.01);
-        assertEquals(Double.MIN_VALUE,StatisticalUtilsArrayList.findMedianOfArrayList(testArrayList3),0.01);
-        assertEquals(Double.MIN_VALUE,StatisticalUtilsArrayList.findStDOfArrayList(testArrayList3),0.01);
+    public void StatisticalUtilsEmptyArrayListTest(){
+        Assertions.assertThrows(IllegalArgumentException.class, ()->{
+            StatisticalUtilsArrayList.findMinOfArrayList(emptyArrayList);
+        });
+        Assertions.assertThrows(IllegalArgumentException.class, ()->{
+            StatisticalUtilsArrayList.findMaxOfArrayList(emptyArrayList);
+        });
+        Assertions.assertThrows(IllegalArgumentException.class, ()->{
+            StatisticalUtilsArrayList.findMeanOfArrayList(emptyArrayList);
+        });
+        Assertions.assertThrows(IllegalArgumentException.class, ()->{
+            StatisticalUtilsArrayList.findMedianOfArrayList(emptyArrayList);
+        });
+        Assertions.assertThrows(IllegalArgumentException.class, ()->{
+            StatisticalUtilsArrayList.findStDOfArrayList(emptyArrayList);
+        });
     }
+
+    /**
+     * Test for the statistical utils for an arraylist using the generics class
+     *
+     * @link StatisticalUtilsArrayList Class
+     */
+    ArrayList<Integer> testArrayListGenerics=new ArrayList<>(){
+        {
+            add(3);
+            add(5);
+            add(2);
+            add(8);
+            add(9);
+            add(13);
+            add(20);
+            add(1);
+            add(15);
+        }
+    };
+    @Test
+    public void StatisticalUtilsArrayListGenericsTest(){
+        Assertions.assertEquals(1, StatisticalUtilsArrayListGenerics.findMinOfArrayList(testArrayListGenerics),0.01);
+        Assertions.assertEquals(20, StatisticalUtilsArrayListGenerics.findMaxOfArrayList(testArrayListGenerics),0.01);
+        Assertions.assertEquals((double)76/9, StatisticalUtilsArrayListGenerics.findMeanOfArrayList(testArrayListGenerics),0.01);
+        Assertions.assertEquals(8, StatisticalUtilsArrayListGenerics.findMedianOfArrayList(testArrayListGenerics),0.01);
+        Assertions.assertEquals(6.4829, StatisticalUtilsArrayListGenerics.findStDOfArrayList(testArrayListGenerics),0.01);
+    }
+
+    /**
+     * Test for the statistical utils for an arraylist if arrayList is empty using the generics class
+     *
+     * @link StatisticalUtilsArrayList Class
+     */
+    ArrayList<Float> emptyArrayListGenerics=new ArrayList<>();
+    @Test
+    public void StatisticalUtilsEmptyArrayListGenericsTest(){
+        Assertions.assertThrows(IllegalArgumentException.class, ()->{
+            StatisticalUtilsArrayListGenerics.findMinOfArrayList(emptyArrayListGenerics);
+        });
+        Assertions.assertThrows(IllegalArgumentException.class, ()->{
+            StatisticalUtilsArrayListGenerics.findMaxOfArrayList(emptyArrayListGenerics);
+        });
+        Assertions.assertThrows(IllegalArgumentException.class, ()->{
+            StatisticalUtilsArrayListGenerics.findMeanOfArrayList(emptyArrayListGenerics);
+        });
+        Assertions.assertThrows(IllegalArgumentException.class, ()->{
+            StatisticalUtilsArrayListGenerics.findMedianOfArrayList(emptyArrayListGenerics);
+        });
+        Assertions.assertThrows(IllegalArgumentException.class, ()->{
+            StatisticalUtilsArrayListGenerics.findStDOfArrayList(emptyArrayListGenerics);
+        });
+    }
+
     /**
      * Test for the Ascending Minima
      *
@@ -152,30 +179,59 @@ public class AppTest
     Double[] actual=ascMin.findAscendingMinima().toArray(new Double[arrayList.size()-windows_size+1]);
     Double[] expected={(double)1,(double)1,(double)2,(double)2,(double)4,(double)4};
     @Test
-    public void testAscendingMinima(){
-        assertArrayEquals(expected, actual);
+    public void ascendingMinimaTest(){
+        Assertions.assertArrayEquals(expected, actual);
     }
 
     /**
-     * Test for the Ascending Minima when the windows size is bigger than the arrayList size
+     * Test for the Ascending Minima when the windows size is greater than the arrayList size
      *
      * @link AscendingMinima Class
      */
-    ArrayList<Double> arrayList2=new ArrayList<Double>(){
+    ArrayList<Double> arrayListOneItem=new ArrayList<Double>(){
         {
             add((double)1);
         }
     };
     int windows_size2=3;
 
-    @Rule
-    public ExpectedException exceptionRule = ExpectedException.none();
+    @Test
+    public void ascendingMinimaGreaterWindowSizeTest(){
+        Assertions.assertThrows(IllegalArgumentException.class,()->{
+            AscendingMinima ascMin=new AscendingMinima(windows_size2,arrayListOneItem);
+        });
+    }
+
+    /**
+     * A test for the ascending minima class when we have an empty array list
+     *
+     * @link AscendingMinima Class
+     *
+     */
+    ArrayList<Double> emptyArrayListAscMin=new ArrayList<>();
+    int windowEmptySize=1;
 
     @Test
-    public void checkIfExceptionIsThrown(){
-        exceptionRule.expect(IllegalArgumentException.class);
-        exceptionRule.expectMessage("");
-        AscendingMinima ascMin2=new AscendingMinima(windows_size2,arrayList2);
+    public void ascendingMinimaEmptyArrayListTest(){
+        Assertions.assertThrows(IllegalArgumentException.class,()->{
+            AscendingMinima ascMin=new AscendingMinima(windowEmptySize,emptyArrayListAscMin);
+        });
     }
+
+    /**
+     * A test for the ascending minima class when we give a negative window size
+     *
+     * @link AscendingMinima Class
+     */
+    int negativeWindowSize=-3;
+
+    @Test
+    public void ascendingMinimaNegativeWindowSizeTest(){
+        Assertions.assertThrows(IllegalArgumentException.class,()->{
+            AscendingMinima ascMin=new AscendingMinima(negativeWindowSize,arrayList);
+        });
+    }
+
+
 
 }

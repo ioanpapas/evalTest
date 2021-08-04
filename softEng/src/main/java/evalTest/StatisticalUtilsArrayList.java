@@ -25,9 +25,8 @@ public class StatisticalUtilsArrayList {
      */
 
     public static double findMinOfArrayList(ArrayList<Double> arrayList){
-        if(arrayList.size()==0){
-            System.out.println("ArrayList is empty");
-            return Double.MIN_VALUE;
+        if(arrayList.isEmpty()){
+            throw new IllegalArgumentException("Empty array...");
         }
         //return Stats.of(arrayList).min();
         return arrayList.stream().mapToDouble(v->v).min().orElseThrow(NoSuchElementException::new);
@@ -42,9 +41,8 @@ public class StatisticalUtilsArrayList {
      */
 
     public static double findMaxOfArrayList(ArrayList<Double> arrayList){
-        if(arrayList.size()==0){
-            System.out.println("ArrayList is empty");
-            return Double.MIN_VALUE;
+        if(arrayList.isEmpty()){
+            throw new IllegalArgumentException("Empty array...");
         }
 
         //return Stats.of(arrayList).max();
@@ -60,9 +58,8 @@ public class StatisticalUtilsArrayList {
      */
 
     public static double findMeanOfArrayList(ArrayList<Double> arrayList){
-        if(arrayList.size()==0){
-            System.out.println("ArrayList is empty");
-            return Double.MIN_VALUE;
+        if(arrayList.isEmpty()){
+            throw new IllegalArgumentException("Empty array...");
         }
         //return Stats.of(arrayList).mean();
         return (arrayList.stream().mapToDouble(v->v).sum())/(arrayList.stream().count());
@@ -77,9 +74,8 @@ public class StatisticalUtilsArrayList {
      */
 
     public static double findMedianOfArrayList(ArrayList<Double> arrayList){
-        if(arrayList.size()==0){
-            System.out.println("ArrayList is empty");
-            return Double.MIN_VALUE;
+        if(arrayList.isEmpty()){
+            throw new IllegalArgumentException("Empty array...");
         }
         List<Double> sorted=arrayList.stream().sorted().collect(Collectors.toList());
         if (sorted.size() % 2 == 0)
@@ -103,9 +99,8 @@ public class StatisticalUtilsArrayList {
      */
 
     public static double findStDOfArrayList(ArrayList<Double> arrayList){
-        if(arrayList.size()==0){
-            System.out.println("ArrayList is empty");
-            return Double.MIN_VALUE;
+        if(arrayList.isEmpty()){
+            throw new IllegalArgumentException("Empty array...");
         }
         //return Stats.of(arrayList).sampleStandardDeviation();
 

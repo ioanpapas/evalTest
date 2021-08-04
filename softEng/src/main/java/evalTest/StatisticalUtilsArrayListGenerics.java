@@ -25,6 +25,10 @@ public class StatisticalUtilsArrayListGenerics<T extends Number>{
      * @return The minimum value of the arrayList, as a double value
      */
     public static <T extends Number> double findMinOfArrayList(ArrayList<T> arrayList){
+        if(arrayList.isEmpty()){
+            throw new IllegalArgumentException("Empty array...");
+        }
+
         return arrayList.stream().map(v->v.doubleValue()).min(Comparator.naturalOrder()).orElseThrow(NoSuchElementException::new);
     }
 
@@ -37,6 +41,9 @@ public class StatisticalUtilsArrayListGenerics<T extends Number>{
      * @return The maximum value of the arrayList, as a double value
      */
     public static <T extends Number> double findMaxOfArrayList(ArrayList<T> arrayList){
+        if(arrayList.isEmpty()){
+            throw new IllegalArgumentException("Empty array...");
+        }
         return arrayList.stream().map(v->v.doubleValue()).max(Comparator.naturalOrder()).orElseThrow(NoSuchElementException::new);
     }
 
@@ -49,6 +56,9 @@ public class StatisticalUtilsArrayListGenerics<T extends Number>{
      * @return The maximum value of the arrayList, as a double value
      */
     public static <T extends Number> double findMeanOfArrayList(ArrayList<T> arrayList){
+        if(arrayList.isEmpty()){
+            throw new IllegalArgumentException("Empty array...");
+        }
         return arrayList.stream().map(v->v.doubleValue()).mapToDouble(v->v).sum()/arrayList.stream().count();
     }
 
@@ -60,12 +70,11 @@ public class StatisticalUtilsArrayListGenerics<T extends Number>{
      *
      * @return The minimum value of the arrayList, as a double value
      */
-    public static double findMedianOfArrayList(ArrayList<Double> arrayList) {
-        if (arrayList.size() == 0) {
-            System.out.println("ArrayList is empty");
-            return Double.MIN_VALUE;
+    public static <T extends Number> double findMedianOfArrayList(ArrayList<T> arrayList) {
+        if(arrayList.isEmpty()){
+            throw new IllegalArgumentException("Empty array...");
         }
-        List<Double> sorted = arrayList.stream().sorted().collect(Collectors.toList());
+        List<Double> sorted = arrayList.stream().map(v->v.doubleValue()).sorted().collect(Collectors.toList());
         if (sorted.size() % 2 == 0)
             return ((double) sorted.get(sorted.size() / 2) + (double) sorted.get(sorted.size() / 2 - 1)) / 2;
         else
@@ -80,19 +89,20 @@ public class StatisticalUtilsArrayListGenerics<T extends Number>{
      *
      * @return The minimum value of the arrayList, as a double value
      */
-    public static double findStDOfArrayList(ArrayList<Double> arrayList){
-        if(arrayList.size()==0){
-            System.out.println("ArrayList is empty");
-            return Double.MIN_VALUE;
+    public static <T extends Number> double findStDOfArrayList(ArrayList<T> arrayList){
+        if(arrayList.isEmpty()){
+            throw new IllegalArgumentException("Empty array...");
         }
-        //return Stats.of(arrayList).sampleStandardDeviation();
 
         //find the mean of our data
-        double mean=StatisticalUtilsArrayList.findMeanOfArrayList(arrayList);
+        double mean=StatisticalUtilsArrayListGenerics.findMeanOfArrayList(arrayList);
+
         //normalize the data subtracting the mean value
-        List<Double> normalized=arrayList.stream().map(value->value-mean).collect(Collectors.toList());
+        List<Double> normalized=arrayList.stream().map(v->v.doubleValue()).map(value->value-mean).collect(Collectors.toList());
+
         //find the sample variance by summing up all normalized values squared and divided by the number of samples minus 1
         double var=normalized.stream().map(value->value*value).collect(Collectors.toList()).stream().mapToDouble(v->v).sum()/(normalized.stream().count()-1);
+
         //return the square root of the variance which is the standard deviation
         return Math.sqrt(var);
     }

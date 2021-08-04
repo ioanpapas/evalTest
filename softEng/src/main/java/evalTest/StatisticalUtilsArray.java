@@ -28,8 +28,7 @@ public class StatisticalUtilsArray {
      */
     public static double findMinOfArray(double[] array) {
         if (array.length == 0) {
-            System.out.println("Array is empty");
-            return Double.MIN_VALUE;
+            throw new IllegalArgumentException("Empty array...");
         }
         return Stats.of(array).min();
         //return Arrays.stream(array).min().getAsDouble();
@@ -43,8 +42,7 @@ public class StatisticalUtilsArray {
      */
     public static double findMaxOfArray(double[] array) {
         if (array.length == 0) {
-            System.out.println("Array is empty");
-            return Double.MIN_VALUE;
+            throw new IllegalArgumentException("Empty array...");
         }
         //return Stats.of(array).max();
         return Arrays.stream(array).max().getAsDouble();
@@ -58,8 +56,7 @@ public class StatisticalUtilsArray {
      */
     public static double findMeanOfArray(double[] array) {
         if (array.length == 0) {
-            System.out.println("Array is empty");
-            return Double.MIN_VALUE;
+            throw new IllegalArgumentException("Empty array...");
         }
         //return Stats.of(array).mean();
         return Arrays.stream(array).average().getAsDouble();
@@ -73,8 +70,7 @@ public class StatisticalUtilsArray {
      */
     public static double findMedianOfArray(double[] array) {
         if (array.length == 0) {
-            System.out.println("Array is empty");
-            return Double.MIN_VALUE;
+            throw new IllegalArgumentException("Empty array...");
         }
         Arrays.sort(array);
 
@@ -92,15 +88,18 @@ public class StatisticalUtilsArray {
      */
     public static double findStDOfArray(double[] array) {
         if (array.length == 0) {
-            System.out.println("Array is empty");
-            return Double.MIN_VALUE;
+            throw new IllegalArgumentException("Empty array...");
         }
+
         //find the mean of our data
         double mean = StatisticalUtilsArray.findMeanOfArray(array);
+
         //normalize the data subtracting the mean value
         double[] normalized = Arrays.stream(array).map(value -> value - mean).toArray();
+
         //find the sample variance by summing up all normalized values squared and divided by the number of samples minus 1
         double var = Arrays.stream(Arrays.stream(normalized).map(value -> value * value).toArray()).sum() / (Arrays.stream(normalized).count() - 1);
+
         //return the square root of the variance which is the standard deviation
         return Math.sqrt(var);
 
