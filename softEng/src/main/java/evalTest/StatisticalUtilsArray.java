@@ -94,15 +94,15 @@ public class StatisticalUtilsArray {
         //find the mean of our data
         double mean = StatisticalUtilsArray.findMeanOfArray(array);
 
-        //normalize the data subtracting the mean value
-        double[] normalized = Arrays.stream(array).map(value -> value - mean).toArray();
+        //find the variance
+        double var =
+                Arrays.stream(array)
+                        //(value-mean)^2
+                        .map((x) -> Math.pow(x - mean, 2.0))
+                        //all sum
+                        .sum();
 
-        //find the sample variance by summing up all normalized values squared and divided by the number of samples minus 1
-        double var = Arrays.stream(Arrays.stream(normalized).map(value -> value * value).toArray()).sum() / (Arrays.stream(normalized).count() - 1);
-
-        //return the square root of the variance which is the standard deviation
-        return Math.sqrt(var);
-
-        //return Stats.of(array).sampleStandardDeviation();
+        //return the square root of the variance divided by the number of values -1
+        return Math.sqrt(var / (array.length - 1));
     }
 }

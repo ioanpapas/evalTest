@@ -11,10 +11,9 @@ import java.util.stream.Collectors;
  * @version 2021.1
  * @since 02/08/2021
  *
- * @param <T> a generic parameter so the class is used for any numerical format (integer,float,double etc.)
  */
 
-public class StatisticalUtilsArrayListGenerics<T extends Number>{
+public class StatisticalUtilsArrayListGenerics{
 
     /**
      * This is a method that finds the minimum value of the array list
@@ -59,7 +58,7 @@ public class StatisticalUtilsArrayListGenerics<T extends Number>{
         if(arrayList.isEmpty()){
             throw new IllegalArgumentException("Empty array...");
         }
-        return arrayList.stream().map(v->v.doubleValue()).mapToDouble(v->v).sum()/arrayList.stream().count();
+        return arrayList.stream().map(v->v.doubleValue()).mapToDouble(v->v).average().getAsDouble();
     }
 
     /**
@@ -97,17 +96,17 @@ public class StatisticalUtilsArrayListGenerics<T extends Number>{
         //find the mean of our data
         double mean=StatisticalUtilsArrayListGenerics.findMeanOfArrayList(arrayList);
 
-        //normalize the data subtracting the mean value
-        List<Double> normalized=arrayList.stream().map(v->v.doubleValue()).map(value->value-mean).collect(Collectors.toList());
-
-        //find the sample variance by summing up all normalized values squared and divided by the number of samples minus 1
-        double var=normalized.stream().map(value->value*value).collect(Collectors.toList()).stream().mapToDouble(v->v).sum()/(normalized.stream().count()-1);
-
-        //return the square root of the variance which is the standard deviation
-        return Math.sqrt(var);
+        //find the variance
+        double var=arrayList.stream()
+                //change T values to double
+                .map(v->v.doubleValue())
+                //(value-mean)^2
+                .mapToDouble((v)->Math.pow(v-mean,2.0))
+                //all sum
+                .sum();
+        
+        //return the square root of the variance divided by the number of values -1 which is the standard deviation
+        return Math.sqrt(var/(arrayList.size()-1));
     }
-
-
-
 
 }

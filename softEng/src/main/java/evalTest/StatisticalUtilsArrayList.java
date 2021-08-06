@@ -106,11 +106,14 @@ public class StatisticalUtilsArrayList {
 
         //find the mean of our data
         double mean=StatisticalUtilsArrayList.findMeanOfArrayList(arrayList);
-        //normalize the data subtracting the mean value
-        List<Double> normalized=arrayList.stream().map(value->value-mean).collect(Collectors.toList());
-        //find the sample variance by summing up all normalized values squared and divided by the number of samples minus 1
-        double var=normalized.stream().map(value->value*value).collect(Collectors.toList()).stream().mapToDouble(v->v).sum()/(normalized.stream().count()-1);
-        //return the square root of the variance which is the standard deviation
-        return Math.sqrt(var);
+
+        //find the variance
+        double var=arrayList.stream()
+                //(value-mean)^2
+                .mapToDouble((v)->Math.pow(v-mean,2.0))
+                //all sum
+                .sum();
+        //return the square root of the variance divided by the number of values -1 which is the standard deviation
+        return Math.sqrt(var/(arrayList.size()-1));
     }
 }

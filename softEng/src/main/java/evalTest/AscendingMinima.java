@@ -20,7 +20,7 @@ public class AscendingMinima {
     /**
      * This variable represents the windows size
      */
-    int windows_size;
+    int windowsSize;
     /**
      * This variable represents the array to be used
      */
@@ -28,7 +28,7 @@ public class AscendingMinima {
     /**
      * This variable represents the array size
      */
-    int array_size;
+    int arraySize;
 
     /**
      * This is the void constructor method of the class, used for initialization
@@ -47,22 +47,9 @@ public class AscendingMinima {
      *
      */
     AscendingMinima(int ws,  ArrayList<Double> arrayList){
-        this.windows_size=ws;
-        this.arrayList=arrayList;
-        this.array_size=arrayList.size();
-        //If window size is bigger than array size then the algorithm can't create the first window so, it can't continue further
-        if (ws>array_size){
-            throw new IllegalArgumentException("Window size can't be greater than array size but found: window size=" +ws+" array size="+array_size);
-        }
-        //If the array is empty the algorithm can't run
-        if (arrayList.size()==0){
-            throw new IllegalArgumentException("Array is empty. Can't use algorithm");
-        }
-        //Can't create window with negative or zero size
-        if(ws<=0){
-            throw new IllegalArgumentException("Window size must be positive, found: " +ws);
-        }
-
+        setWindowsSize(ws);
+        setArrayList(arrayList);
+        this.arraySize=arrayList.size();
     }
 
     /**
@@ -70,8 +57,8 @@ public class AscendingMinima {
      *
      * @return the windows size, in integer value
      */
-    public int getWindows_size(){
-        return windows_size;
+    public int getWindowsSize(){
+        return windowsSize;
     }
 
     /**
@@ -79,8 +66,8 @@ public class AscendingMinima {
      *
      * @return the current array size, as an integer value
      */
-    public int getArray_Size() {
-        return array_size;
+    public int getArraySize() {
+        return arraySize;
     }
 
     /**
@@ -109,19 +96,19 @@ public class AscendingMinima {
     /**
      * The setter method for the window size
      *
-     * @param windows_size the new window size, as an integer value
+     * @param windowsSize the new window size, as an integer value
      *
      * @throws IllegalArgumentException when the window size is not positive
      * @throws IllegalArgumentException when the window size is greater than the array size
      */
-    public void setWindows_Size(int windows_size) {
-        if(windows_size<=0){
-            throw new IllegalArgumentException("Window size must be positive, found: " +windows_size);
+    public void setWindowsSize(int windowsSize) {
+        if(windowsSize<=0){
+            throw new IllegalArgumentException("Window size must be positive, found: " +windowsSize);
         }
-        if (windows_size>array_size){
-            throw new IllegalArgumentException("Window size can't be greater than array size but found: window size=" +windows_size+" array size="+array_size);
+        if (windowsSize>arraySize){
+            throw new IllegalArgumentException("Window size can't be greater than array size but found: window size=" +windowsSize+" array size="+arraySize);
         }
-        this.windows_size = windows_size;
+        this.windowsSize = windowsSize;
     }
 
     /**
@@ -132,9 +119,9 @@ public class AscendingMinima {
      */
     public ArrayList<Double> initializeWindow(){
         //Create empty window with capacity as great as the window size
-        ArrayList<Double> window=new ArrayList<>(windows_size);
+        ArrayList<Double> window=new ArrayList<>(windowsSize);
         //Add to the window the first WINDOW_SIZE elements of the array list, so as to create the first window
-        for (int i=0;i<windows_size;i++){
+        for (int i=0;i<windowsSize;i++){
             window.add(arrayList.get(i));
         }
 
@@ -153,15 +140,15 @@ public class AscendingMinima {
         //Initialize the ascending minima array to be returned with capacity as great as the array size minus the window
         //size plus 1. If the array size is 5 and the window size is 3 then the algorithm will go as follows:
         //0-1-2, 1-2-3, 2-3-4, end. That means the algorithm will find 3 minimums to return and so 5-3+1=3.
-        ArrayList<Double> ascMin=new ArrayList<>(array_size-windows_size+1);
+        ArrayList<Double> ascMin=new ArrayList<>(arraySize-windowsSize+1);
         //find the minimum of the first window and add it to the arraylist to be returned
         ascMin.add(StatisticalUtilsArrayList.findMinOfArrayList(window));
 
-        for(int i=1;i<array_size-windows_size+1;i++){
+        for(int i=1;i<arraySize-windowsSize+1;i++){
             //remove the first element from the window
             window.remove(0);
             //add the next element from the array list to the window
-            window.add(arrayList.get(i+windows_size-1));
+            window.add(arrayList.get(i+windowsSize-1));
             //find the minimum of the current window and add it to the arraylist to be returned
             ascMin.add(StatisticalUtilsArrayList.findMinOfArrayList(window));
         }
